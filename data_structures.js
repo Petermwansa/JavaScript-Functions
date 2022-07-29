@@ -122,3 +122,236 @@ function filteredArray(arr, elem) {
 }
   
 console.log(filteredArray([[3, 2, 3], [1, 6, 3], [3, 13, 26], [19, 3, 9]], 3));
+
+
+
+
+//multidimensional array
+let nestedArray = [
+  ['deep'],
+  [
+    ['deeper'], ['deeper'] 
+  ],
+  [
+    [
+      ['deepest'], ['deepest']
+    ],
+    [
+      [
+        ['deepest-est?']
+      ]
+    ]
+  ]
+];
+nestedArray[2][0][0] = "deepestest";
+nestedArray[2][0][1] = "deepestest1";
+
+console.log(nestedArray[2][1][0][0][0]);
+console.log(nestedArray);
+
+
+
+
+//key-value pairs
+const tekkenCharacter = {
+  player: 'Hwoarang',
+  fightingStyle: 'Tae Kwon Doe',
+  human: true
+};
+
+let foods = {
+  apples: 25,
+  oranges: 32,
+  plums: 28
+};
+
+foods.bananas = 13;
+foods.grapes = 35;
+foods.strawberries = 27;
+
+
+console.log(foods);
+
+
+
+
+
+//modify objects in objects
+let nestedObject = {
+  id: 28802695164,
+  date: 'December 31, 2016',
+  data: {
+    totalUsers: 99,
+    online: 80,
+    onlineStatus: {
+      active: 67,
+      away: 13,
+      busy: 8
+    }
+  }
+};
+
+
+let userActivity = {
+  id: 23894201352,
+  date: 'January 1, 2017',
+  data: {
+    totalUsers: 51,
+    online: 42
+  }
+};
+
+userActivity.data.online = 45
+
+console.log(userActivity);
+
+
+
+
+
+//using the bracket notation
+let foods = {
+  apples: 25,
+  oranges: 32,
+  plums: 28,
+  bananas: 13,
+  grapes: 35,
+  strawberries: 27,
+  data: {
+    one: 12,
+    two: 13
+  }
+};
+
+function checkInventory(scannedItem) {
+  return foods[scannedItem];
+}
+
+console.log(checkInventory("apples"));   //25
+
+
+
+
+
+//the delete keyword
+let foods = {
+  apples: 25,
+  oranges: 32,
+  plums: 28,
+  bananas: 13,
+  grapes: 35,
+  strawberries: 27
+};
+
+delete foods.oranges;
+delete foods.plums;
+delete foods.strawberries;   //removes the specified properties
+
+console.log(foods);
+
+
+
+
+//check if property exists
+let users = {
+  Alan: {
+    age: 27,
+    online: true
+  },
+  Jeff: {
+    age: 32,
+    online: true
+  },
+  Sarah: {
+    age: 48,
+    online: true
+  },
+  Ryan: {
+    age: 19,
+    online: true
+  }
+};
+
+function isEveryoneHere(userObj) {
+  if('Alan' in userObj && userObj.hasOwnProperty('Jeff') && 'Sarah' in userObj && 'Ryan' in userObj) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+console.log(isEveryoneHere(users));    //this log will return true
+
+
+
+
+
+//iterate throught the keys of an obj using the 'for....in'
+const users1 = {
+  Alan: {
+    online: false
+  },
+  Jeff: {
+    online: true
+  },
+  Sarah: {
+    online: false
+  }
+}
+
+function countOnline(usersObj) {
+  let count = 0;
+  for(let user in usersObj) {
+    if(usersObj[user].online === true) {
+      count++
+    }
+  }
+      return count;
+
+}
+
+console.log(countOnline(users1));
+
+
+
+
+
+//generate an array of all objects
+let users2 = {
+  Alan: {
+    age: 27,
+    online: false
+  },
+  Jeff: {
+    age: 32,
+    online: true
+  },
+  Sarah: {
+    age: 48,
+    online: false
+  },
+  Ryan: {
+    age: 19,
+    online: true
+  }
+};
+
+function getArrayOfUsers(obj) {
+  return Object.keys(obj);
+}
+
+console.log(getArrayOfUsers(users2));
+
+
+
+
+//CONVERT FROM FAR TO CELSIUS
+function convertCtoF(celsius) {
+  let fahrenheit;
+
+  fahrenheit = (celsius * 9/5) + 32;
+
+  return fahrenheit;
+}
+
+convertCtoF(30);
