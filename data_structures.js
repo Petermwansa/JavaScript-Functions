@@ -91,7 +91,7 @@ function quickCheck(arr, elem) {
     // Only change code above this line
 }
   
-    console.log(quickCheck(['squash', 'onions', 'shallots'], 'mushrooms'));
+console.log(quickCheck(['squash', 'onions', 'shallots'], 'mushrooms'));
 
 
 function filteredArray(arr, elem) {
@@ -148,8 +148,6 @@ nestedArray[2][0][1] = "deepestest1";
 
 console.log(nestedArray[2][1][0][0][0]);
 console.log(nestedArray);
-
-
 
 
 //key-value pairs

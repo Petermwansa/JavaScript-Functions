@@ -227,4 +227,74 @@ console.log(titleCase("I'm a little tea pot yes"));
 
 
 
+
 //SLICE AND SPLICE
+
+function frankenSplice(arr1, arr2, n) {
+  let localArray = arr2.slice();
+  for (let i = 0; i < arr1.length; i++) {
+    localArray.splice(n, 0, arr1[i]);
+    n++;
+  }
+  return localArray;
+}
+
+
+
+
+
+//NOT RETURN FALSY
+
+function bouncer(arr){
+  let newArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i]) newArray.push(arr[i]);
+  }
+  return newArray;
+}
+console.log(bouncer([7, "ate", "", false, 9]));
+
+//method 2
+function bouncer(arr) {
+  return arr.filter(Boolean);
+}
+
+
+
+
+
+//SORT AND RETURN LENGTH(INDEX) OF ENTRY
+
+const arr = [12,3,34,2,67,22,5,6,78,9,2,3,45,29,21,7];
+function sorted(array, num) {
+  array.sort((a,b) => a - b);
+  
+  for(let i = 0; i < array.length; i++) {
+    if(arr[i] >= num){
+      return i;
+    }
+  }
+  
+  return array.length;
+}
+console.log(sorted(arr, 12));
+
+
+
+
+//TEST IF ALL THE LETTERS IN THE SECOND ARRAY ARE IN THE FIRST
+
+let array = ["Hello", "hey" ]
+
+function mutation(arr) {
+  let test = arr[1].toLowerCase();
+  let target = arr[0].toLowerCase();
+  
+  for (let i = 0; i < test.length; i++){
+    if(target.indexOf(test[i]) < 0) return false;
+  }
+  return true
+}
+
+
+console.log(mutation(array));
