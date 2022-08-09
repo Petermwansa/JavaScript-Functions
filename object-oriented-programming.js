@@ -314,3 +314,183 @@ let duck5 = new Bird();
 duck.constructor;
 let beagle5 = new Dog();
 beagle.constructor;
+
+
+
+
+
+//ADDING METHODS AFTER INHERITANCE
+function Animal() { }
+Animal.prototype.eat = function() { 
+  console.log("nom nom nom");  
+
+};
+
+function Dog() { }
+
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
+
+
+Dog.prototype.bark = function() {
+  console.log("Woof!");
+}
+
+let beagle6 = new Dog();
+console.log(beagle);
+
+
+
+
+
+
+
+
+
+
+// OVERIDE INHERITED METHODS 
+
+// an object can inherit its behavior (methods) from another object by referencing its prototype object:
+//ChildObject.prototype = Object.create(ParentObject.prototype);
+
+//Then the ChildObject received its own methods by chaining them onto its prototype:
+//ChildObject.prototype.methodName = function() {...};
+
+
+function Animal() { }
+Animal.prototype.eat = function() {
+  return "nom nom nom";
+};
+function Bird() { }
+
+Bird.prototype = Object.create(Animal.prototype);
+
+Bird.prototype.eat = function() {
+  return "peck peck peck";
+};
+//code explanation of the code above
+
+/* If you have an instance let duck = new Bird(); and you call duck.eat(), this is how JavaScript looks for the method on the prototype chain of duck:
+
+1==duck => Is eat() defined here? No.
+2==Bird => Is eat() defined here? => Yes. Execute it and stop searching.
+3==Animal => eat() is also defined, but JavaScript stopped searching before reaching this level.
+4==Object => JavaScript stopped searching before reaching this level. */
+
+// ============================================= THE CODE =================================
+function Bird() { }
+
+Bird.prototype.fly = function() { return "I am flying!"; };
+
+function Penguin() { }
+Penguin.prototype = Object.create(Bird.prototype);
+Penguin.prototype.constructor = Penguin;
+
+
+Penguin.prototype.fly = function() {
+  return "Alas, this is a flightless bird.";
+}
+
+let penguin = new Penguin();
+console.log(penguin.fly());
+
+
+
+
+
+
+
+
+
+
+//USE A MIXIN TO ADD COMMON BEHAVIOUR BETWEEN UNRELATED OBJECTS
+//for unrelated objects, instead of using inheritance, we use mixins which allows other objects to use a collection of functions
+
+let bird = {
+  name: "Donald",
+  numLegs: 2
+};
+
+let boat = {
+  name: "Warrior",
+  type: "race-boat"
+};
+
+// Only change code below this line
+
+let glideMixin = function (obj) {
+  obj.glide = function() {
+    console.log("The glide works");
+  }
+};
+
+glideMixin(bird);
+glideMixin(boat)
+
+bird.glide();
+boat.glide();
+
+
+
+
+
+
+
+
+// USE CLOSURE TO TO PROTECT PROPERTIES WITHIN AN OBJECT FROM BEING MODIFIED 
+// CLOSURE === thgis is a propertiy in JS where a function always has access to the context in which it was created
+
+function Bird() {
+  let hatchedEgg = 10;
+
+  this.getHatchedEggCount = function() { 
+    return hatchedEgg;
+  };
+}
+let ducky = new Bird();
+ducky.getHatchedEggCount();
+
+//code explanation
+/* getHatchedEggCount is a is a privileged method, because 
+it has access to the private variable hatchedEgg. 
+This is possible because hatchedEgg is declared in the same context as getHatchedEggCount */
+
+function Bird() {
+  let weight = 15;
+  this.getWeight = function () {
+    return weight;
+  }
+}
+
+
+
+
+
+
+
+//UNDERSTAND THE IMMEDIATELY INVOKE FUNCTION EXPRESSION IIFE
+//this enables us to invoke a function as soon as it is declared
+
+(function () {
+  console.log("Chirp, chirp!");
+})();
+
+//code explation
+/*Note that the function has no name and is not stored in a variable. 
+The two parentheses () at the end of the function expression 
+cause it to be immediately executed or invoked. This pattern is known 
+as an immediately invoked function expression or IIFE. */
+
+(function () {
+  console.log("A cozy nest is ready");
+})();
+
+
+
+
+
+
+//USING AN IIFE TO CREATE A MODULE
+//An immediately invoked function expression (IIFE) is often used to group related 
+//functionality into a single object or module.
+
