@@ -478,3 +478,28 @@ function nonMutatingSplice(cities) {
 
 const inputCities = ["Chicago", "Delhi", "Islamabad", "London", "Berlin"];
 nonMutatingSplice(inputCities);
+
+
+
+
+
+
+ 
+
+
+
+
+
+//Combine Two Arrays Using the concat Method
+
+function nonMutatingConcat(original, attach) {
+  let newArray= [];
+
+  newArray = original.concat(attach);
+
+  return newArray;
+} 
+
+const first = [1, 2, 3];
+const second = [4, 5];
+nonMutatingConcat(first, second);
